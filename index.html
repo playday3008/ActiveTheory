@@ -37,7 +37,7 @@
 			var p = 'app';
 			try {eval('async () => {};');} catch(e) {window._ES5_ = true;p = 'es5-'+p;}
 			var s = document.createElement('script');
-			s.src = 'assets/js/'+p+'.js?' + window._CACHE_;
+			s.src = '/ActiveTheory/assets/js/'+p+'.js?' + window._CACHE_;
 			s.async = true;
 			document.head.appendChild(s);
 		})();
