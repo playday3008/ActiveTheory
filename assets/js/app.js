@@ -11242,7 +11242,7 @@ Class(function GLUIStage() {
         DEFAULT_SCALE = new Vector3(1, 1, 1);
     !async function() {
         if ("function" != typeof createObjects) throw "HierarchyAnimation :: Second parameter requires callback function to create objects";
-        if ("string" == typeof _data && (_data = await get(Assets.getPath(`assets/geometry/${_data}.json`))), _objects = await createObjects(_data.hierarchy), !Array.isArray(_objects)) throw "HierarchyAnimation :: Object creation function requires an array to be returned";
+        if ("string" == typeof _data && (_data = await get(Assets.getPath(`/ActiveTheory/assets/geometry/${_data}.json`))), _objects = await createObjects(_data.hierarchy), !Array.isArray(_objects)) throw "HierarchyAnimation :: Object creation function requires an array to be returned";
         nestObjects(), _this.duration = _data.frames.length
     }(), this.update = function(totalWeight = 1, isSet) {
         if (!_objects) return;
@@ -17295,7 +17295,7 @@ Class(function MouseFlowMap({
         if (_video) return;
         let ext = "probably" === Video.supportsVideoType("webm") ? "webm" : "mp4",
             name = Device.mobile.phone ? "reel-mobile" : "reel";
-        _video = _this.initClass(VideoColorGrid, `assets/videos/${name}.${ext}`, 1, !0);
+        _video = _this.initClass(VideoColorGrid, `/ActiveTheory/assets/videos/${name}.${ext}`, 1, !0);
         let state = Pages.instance().getState();
         _video.ready().then(() => {
             "home" != state && "" != state && "about" != state || (_video && (_video.needsColorsChange = !0), _video.play(0, 0).then(() => {
@@ -17653,7 +17653,7 @@ Class(function MouseFlowMap({
             let {
                 id: id,
                 imgSize: imgSize
-            } = item, $icon = $gl(imgSize[0], imgSize[1], Utils3D.getTexture(`assets/images/about/${id}.png`));
+            } = item, $icon = $gl(imgSize[0], imgSize[1], Utils3D.getTexture(`/ActiveTheory/assets/images/about/${id}.png`));
             $icon.id = id;
             let shader = _this.initClass(Shader, "AboutObject", AboutUI.getGradientUniforms());
             if ($icon.useShader(shader), $icon.alpha = .6, _group.add($icon), _icons.push($icon), Device.mobile) {
@@ -17952,7 +17952,7 @@ Class(function MouseFlowMap({
     }
     Inherit(this, Element);
     const _this = this,
-        SRC = `assets/videos/${Utils.query("file")}`,
+        SRC = `/ActiveTheory/assets/videos/${Utils.query("file")}`,
         DATA = `${SRC}.json`,
         VIDEO = `${SRC}.mp4`;
     var $this, _data, _video, _timeline, _meta = !1,
@@ -18954,7 +18954,7 @@ Class(function MouseFlowMap({
             _links.push(obj);
             let $group = $gl();
             $this.add($group);
-            let $img = $gl(data.imgSize[0], data.imgSize[1], Utils3D.getTexture(`assets/images/about/${id}.png`));
+            let $img = $gl(data.imgSize[0], data.imgSize[1], Utils3D.getTexture(`/ActiveTheory/assets/images/about/${id}.png`));
             $img.alpha = .6;
             let shader = _this.initClass(Shader, "AboutObject", AboutUI.getGradientUniforms());
             $img.useShader(shader), $img.oMx = data.pImgOffset[0], $img.oMy = data.pImgOffset[1], $img.oX = data.imgOffset[0], $img.oY = data.imgOffset[1], $group.add($img);
@@ -21068,7 +21068,7 @@ Class(function MouseFlowMap({
                 ignoreUIL: !0
             },
             tLogo: {
-                value: Utils3D.getTexture(`assets/images/screen/${Device.mobile.phone?"logo-mobile":"logo"}.jpg`)
+                value: Utils3D.getTexture(`/ActiveTheory/assets/images/screen/${Device.mobile.phone?"logo-mobile":"logo"}.jpg`)
             },
             tProjectLogo: {
                 value: null
