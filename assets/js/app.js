@@ -11619,10 +11619,10 @@ Class(function GLUIStage() {
             shader = _this.initClass(Shader, "LightVolume", {
                 unique: _input.prefix,
                 tMap: {
-                    value: Utils3D.getTexture("/ActiveTheory/assets/images/_lightvolume/light.jpg")
+                    value: Utils3D.getTexture("ActiveTheory/assets/images/_lightvolume/light.jpg")
                 },
                 tMask: {
-                    value: Utils3D.getRepeatTexture("/ActiveTheory/assets/images/_lightvolume/light-mask.jpg")
+                    value: Utils3D.getRepeatTexture("ActiveTheory/assets/images/_lightvolume/light-mask.jpg")
                 },
                 uScale: {
                     value: 1,
