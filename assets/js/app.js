@@ -918,7 +918,7 @@
                 timeout && clearTimeout(timeout), increment(), _assets.length && loadAsset()
             }
             let path = _assets.splice(_assets.length - 1, 1)[0];
-            const name = path.split("/ActiveTheory/").last().split(".")[0],
+            const name = path.split("/ActiveTheory/assets/").last().split(".")[0],
                 ext = path.split(".").last().split("?")[0].toLowerCase();
             let timeout = Timer.create(timedOut, AssetLoader.TIMEOUT, path);
             if (!Assets.preventCache && ~Assets.__loaded.indexOf(path)) return loaded();
@@ -963,7 +963,7 @@
             this.add(1);
             let module = window._ES5_ ? "es5-modules" : "modules",
                 s = document.createElement("script");
-            return s.src = "/ActiveTheory/js/" + module + ".js?" + window._CACHE_, s.async = !0, document.head.appendChild(s), AssetLoader.waitForLib("_MODULES_").then(_ => _this.trigger(1))
+            return s.src = "/ActiveTheory/assets/js/" + module + ".js?" + window._CACHE_, s.async = !0, document.head.appendChild(s), AssetLoader.waitForLib("_MODULES_").then(_ => _this.trigger(1))
         }, this.add = function(num) {
             _total += num || 1
         }, this.trigger = function(num) {
@@ -8873,7 +8873,7 @@ Class(function zUtils3D() {
     }(), this.loadGeometry = function(path, custom) {
         if (!Device.graphics.webgl) return Promise.resolve(new PlaneGeometry(1, 1));
         if (_cache[path]) return Promise.resolve(_cache[path]);
-        if (path.includes("/ActiveTheory/geometry/") || (path = "/ActiveTheory/geometry/" + path), path.includes(".") || (path += ".json"), path = Thread.absolutePath(Assets.getPath(path)), _this.caching) {
+        if (path.includes("/ActiveTheory/assets/geometry/") || (path = "/ActiveTheory/assets/geometry/" + path), path.includes(".") || (path += ".json"), path = Thread.absolutePath(Assets.getPath(path)), _this.caching) {
             if (_cacheWait[path]) return _cacheWait[path];
             _cacheWait[path] = Promise.create()
         }
@@ -8892,7 +8892,7 @@ Class(function zUtils3D() {
     }, this.loadSkinnedGeometry = function(path, custom) {
         if (!Device.graphics.webgl) return Promise.resolve(new PlaneGeometry(1, 1));
         if (_cache[path]) return Promise.resolve(_cache[path]);
-        if (path.includes("/ActiveTheory/geometry/") || (path = "/ActiveTheory/geometry/" + path), path.includes(".") || (path += ".json"), path = Thread.absolutePath(Assets.getPath(path)), _this.caching) {
+        if (path.includes("/ActiveTheory/assets/geometry/") || (path = "/ActiveTheory/assets/geometry/" + path), path.includes(".") || (path += ".json"), path = Thread.absolutePath(Assets.getPath(path)), _this.caching) {
             if (_cacheWait[path]) return _cacheWait[path];
             _cacheWait[path] = Promise.create()
         }
@@ -9986,7 +9986,7 @@ Class(function zUtils3D() {
                 }
                 return font
             }(),
-            path = mapped && GLTextGeometry.fontPath ? GLTextGeometry.fontPath : "/ActiveTheory/fonts/";
+            path = mapped && GLTextGeometry.fontPath ? GLTextGeometry.fontPath : "/ActiveTheory/assets/fonts/";
         return Assets.getPath(path + fontName + "." + ext + `?${window._CACHE_||Date.now()}`)
     }
     var _promises = {};
@@ -11397,7 +11397,7 @@ Class(function GLUIStage() {
 }, "static"), Class(function AreaLightUtil() {
     async function load() {
         _init = !0;
-        let data = await fetch(Assets.getPath("/ActiveTheory/images/_lighting/arealights.json")),
+        let data = await fetch(Assets.getPath("/ActiveTheory/assets/images/_lighting/arealights.json")),
             json = await data.json();
         _textures[0] = new DataTexture(new Float32Array(json.LTC1), 64, 64, Texture.RGBAFormat, Texture.FLOAT), _textures[1] = new DataTexture(new Float32Array(json.LTC2), 64, 64, Texture.RGBAFormat, Texture.FLOAT), _loaded.resolve()
     }
@@ -11619,10 +11619,10 @@ Class(function GLUIStage() {
             shader = _this.initClass(Shader, "LightVolume", {
                 unique: _input.prefix,
                 tMap: {
-                    value: Utils3D.getTexture("/ActiveTheory/images/_lightvolume/light.jpg")
+                    value: Utils3D.getTexture("/ActiveTheory/assets/images/_lightvolume/light.jpg")
                 },
                 tMask: {
-                    value: Utils3D.getRepeatTexture("/ActiveTheory/images/_lightvolume/light-mask.jpg")
+                    value: Utils3D.getRepeatTexture("/ActiveTheory/assets/images/_lightvolume/light-mask.jpg")
                 },
                 uScale: {
                     value: 1,
@@ -12167,7 +12167,7 @@ Class(function MouseFlowMap({
                 value: new Vector2(1, 1)
             },
             tLUT: {
-                value: Utils3D.getLookupTexture("/ActiveTheory/images/pbr/lut.png"),
+                value: Utils3D.getLookupTexture("/ActiveTheory/assets/images/pbr/lut.png"),
                 ignoreUIL: !0
             },
             uEnv: {
@@ -13110,7 +13110,7 @@ Class(function MouseFlowMap({
         else {
             let texturePath = input.getImage("texture"),
                 maskPath = input.getImage("mask");
-            texturePath ? texturePath.includes("/ActiveTheory/images") || (texturePath = _options.rootPath + texturePath) : texturePath = "/ActiveTheory/images/_scenelayout/uv.jpg", maskPath ? maskPath.includes("/ActiveTheory/images") || (maskPath = _options.rootPath + maskPath) : maskPath = "/ActiveTheory/images/_scenelayout/mask.jpg", shader = _this.initClass(Shader, shaderName, {
+            texturePath ? texturePath.includes("/ActiveTheory/assets/images") || (texturePath = _options.rootPath + texturePath) : texturePath = "/ActiveTheory/assets/images/_scenelayout/uv.jpg", maskPath ? maskPath.includes("/ActiveTheory/assets/images") || (maskPath = _options.rootPath + maskPath) : maskPath = "/ActiveTheory/assets/images/_scenelayout/mask.jpg", shader = _this.initClass(Shader, shaderName, {
                 unique: `Element_${id}_${_name}`
             }), "SceneLayout" != shaderName && window[shaderName] || shader.addUniforms({
                 tMap: {
@@ -15711,7 +15711,7 @@ Class(function MouseFlowMap({
         _opts.value = Object.assign({
             src: "",
             relative: _opts.relative || "",
-            prefix: _opts.prefix || "/ActiveTheory/images",
+            prefix: _opts.prefix || "/ActiveTheory/assets/images",
             filename: ""
         }, _opts.value), _value = Object.assign({}, _opts.value), _this.init(_id, _opts)
     }
@@ -17484,10 +17484,10 @@ Class(function MouseFlowMap({
     Home.SWAP = "home_swap", Home.PRESS = "home_press", Home.RELEASE = "home_release"
 }), Class(function Nav() {
     function initLogo() {
-        ($logo = $gl(34, 34, "/ActiveTheory/images/nav/at-logo.png")).size = 34;
+        ($logo = $gl(34, 34, "/ActiveTheory/assets/images/nav/at-logo.png")).size = 34;
         let shader = _this.initClass(Shader, "Icon", {
             tMap: {
-                value: Utils3D.getTexture("/ActiveTheory/images/nav/at-logo.png")
+                value: Utils3D.getTexture("/ActiveTheory/assets/images/nav/at-logo.png")
             },
             uColor: UIColor.uniform,
             transparent: !0,
@@ -17519,7 +17519,7 @@ Class(function MouseFlowMap({
                 blending: Shader.ADDITIVE_BLENDING
             });
             if (await $text.useShader(testShader), _textBatch.add($text), $text.alpha = 0, $text.shader = testShader, $text.stateId = item.state, $text.data = item, _items.push($text), promises.push($text.text.ready()), Device.mobile) {
-                let $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"));
+                let $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
                 $hit.shader.neverRender = !0, $hit.scaleX = 60, $hit.scaleY = 30, $hit.mesh.position.z = .01, $text.hit = $hit, _linksContainer.add($hit)
             }
         }
@@ -17657,7 +17657,7 @@ Class(function MouseFlowMap({
             $icon.id = id;
             let shader = _this.initClass(Shader, "AboutObject", AboutUI.getGradientUniforms());
             if ($icon.useShader(shader), $icon.alpha = .6, _group.add($icon), _icons.push($icon), Device.mobile) {
-                let $hit = $gl(34, 34, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"));
+                let $hit = $gl(34, 34, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
                 _group.add($hit), $hit.shader.neverRender = !0, $icon.$hit = $hit, $hit.alpha = 1e-4
             }
         })
@@ -18736,7 +18736,7 @@ Class(function MouseFlowMap({
             },
             uUIColor: UIColor.uniform,
             tLogo: {
-                value: Utils3D.getTexture("/ActiveTheory/images/about/logo.jpg")
+                value: Utils3D.getTexture("/ActiveTheory/assets/images/about/logo.jpg")
             },
             tGlitch: {
                 value: null,
@@ -18973,7 +18973,7 @@ Class(function MouseFlowMap({
                 });
             if ($group.add(batch), data.mLines)
                 for (let i = 0, l = data.mLines.length; i < l; i++) {
-                    let $line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg")),
+                    let $line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")),
                         shader = _this.initClass(Shader, "BasicGLUIBatch", {
                             blending: Shader.ADDITIVE_BLENDING
                         });
@@ -19364,7 +19364,7 @@ Class(function MouseFlowMap({
             border: "1px solid #fff"
         }), ($bg = $this.create(".bg")).size(40, 40).bg("#fff").transformPoint("0%", "50%").transform({
             scaleX: 0
-        }), _this.bg = $bg, _this.border = $border, ($arrow = $this.create(".arrow")).size(24, 24).center().bg("/ActiveTheory/images/ui/arrow-white.png"), ($arrow2 = $this.create(".arrow")).size(24, 24).center().bg("/ActiveTheory/images/ui/arrow.png").transform({
+        }), _this.bg = $bg, _this.border = $border, ($arrow = $this.create(".arrow")).size(24, 24).center().bg("/ActiveTheory/assets/images/ui/arrow-white.png"), ($arrow2 = $this.create(".arrow")).size(24, 24).center().bg("/ActiveTheory/assets/images/ui/arrow.png").transform({
             x: -20
         }).css({
             opacity: 0
@@ -19452,7 +19452,7 @@ Class(function MouseFlowMap({
     }
 
     function initLogo() {
-        ($logo = $container.create("Logo", "img")).attr("src", "/ActiveTheory/images/_fallback/logo.png"), $logo.css({
+        ($logo = $container.create("Logo", "img")).attr("src", "/ActiveTheory/assets/images/_fallback/logo.png"), $logo.css({
             position: "relative",
             width: Device.mobile.phone ? 120 : "150px",
             margin: "auto",
@@ -19672,7 +19672,7 @@ Class(function MouseFlowMap({
             $container = $gl();
         $container.x = 600, GLUI.Stage.add($container), $container.add(batch);
         for (let i = 0; i < 20; i++) {
-            let $a = $gl(100, 40, "/ActiveTheory/images/_scenelayout/uv.jpg");
+            let $a = $gl(100, 40, "/ActiveTheory/assets/images/_scenelayout/uv.jpg");
             $a.y = 50 * i, batch.add($a), _this.startRender(_ => {
                 $a.x = 100 * Math.sin(Math.radians(45 * i) + .0025 * Render.TIME)
             });
@@ -19845,7 +19845,7 @@ Class(function MouseFlowMap({
             depthTest: !1,
             depthWrite: !1,
             tMask: {
-                value: Utils3D.getTexture("/ActiveTheory/images/fx/glitch3.jpg"),
+                value: Utils3D.getTexture("/ActiveTheory/assets/images/fx/glitch3.jpg"),
                 getTexture: Utils.getRepeatTexture
             },
             uStroke: {
@@ -19969,10 +19969,10 @@ Class(function MouseFlowMap({
     }
 }), Class(function CloseBtn() {
     function initCross() {
-        $cross = $gl(1, 1, "/ActiveTheory/images/work/cross.jpg"), $this.add($cross);
+        $cross = $gl(1, 1, "/ActiveTheory/assets/images/work/cross.jpg"), $this.add($cross);
         let shader = _this.initClass(Shader, "Icon", {
             tMap: {
-                value: Utils3D.getTexture("/ActiveTheory/images/work/cross.jpg")
+                value: Utils3D.getTexture("/ActiveTheory/assets/images/work/cross.jpg")
             },
             uColor: UIColor.uniform,
             transparent: !0,
@@ -19982,7 +19982,7 @@ Class(function MouseFlowMap({
     }
 
     function initHit() {
-        ($hit = $gl(1, 1, "/ActiveTheory/images/_scenelayout/uv.jpg")).shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit), $hit.scale = 30, $hit.x = 7, $hit.y = 7
+        ($hit = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/uv.jpg")).shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit), $hit.scale = 30, $hit.x = 7, $hit.y = 7
     }
 
     function animateIn() {
@@ -20134,7 +20134,7 @@ Class(function MouseFlowMap({
     }
 
     function initBg() {
-        ($hit = $gl(1.05 * _width, 1.6 * _height, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"))).y = -.04, $hit.baseY = $hit.y, $hit.alpha = 1e-5, $hit.shader.neverRender = !0, $bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg")), $this.add($bg), $bg.add($hit);
+        ($hit = $gl(1.05 * _width, 1.6 * _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).y = -.04, $hit.baseY = $hit.y, $hit.alpha = 1e-5, $hit.shader.neverRender = !0, $bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")), $this.add($bg), $bg.add($hit);
         let aspect = new Vector2(1, 1);
         aspect.y = _width / _height;
         let shader = _this.initClass(Shader, "WorkItemButtonBg", {
@@ -20265,7 +20265,7 @@ Class(function MouseFlowMap({
     }
 
     function initBg() {
-        $bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg")), $this.add($bg);
+        $bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")), $this.add($bg);
         let aspect = new Vector2(1, 1);
         aspect.y = _width / _height;
         let shader = _this.initClass(Shader, "WorkItemButtonBg", {
@@ -20433,7 +20433,7 @@ Class(function MouseFlowMap({
             value: new Vector2(0, 1)
         },
         tMask: {
-            value: Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg")
+            value: Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")
         },
         uLogoAffect: HomeLogo.instance().uniform
     }), _shader.receiveShadow = !0, Mirror.instance().decorate(_shader), _this.startRender(_ => {}), this.onVisible = function() {
@@ -20445,7 +20445,7 @@ Class(function MouseFlowMap({
             value: new Color("#000000")
         },
         tMask: {
-            value: Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg")
+            value: Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")
         }
     })
 }), Class(function SceneCode(_input, _group) {
@@ -20866,7 +20866,7 @@ Class(function MouseFlowMap({
     }
 }), Class(function MailBtn() {
     function initIcon() {
-        let texture = Utils3D.getTexture("/ActiveTheory/images/about/email.png");
+        let texture = Utils3D.getTexture("/ActiveTheory/assets/images/about/email.png");
         $icon = $gl(1, 1, texture), $this.add($icon), $icon.shader.blending = Shader.ADDITIVE_BLENDING;
         let shader = _this.initClass(Shader, "IconAlpha", {
             tMap: {
@@ -20890,7 +20890,7 @@ Class(function MouseFlowMap({
     }
 
     function initHit() {
-        ($hit = $gl(1, 1, "/ActiveTheory/images/_scenelayout/uv.jpg")).shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit), $hit.scale = 40, $hit.x = 11, $hit.baseX = $hit.x, $hit.y = 7, $hit.baseY = $hit.y
+        ($hit = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/uv.jpg")).shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit), $hit.scale = 40, $hit.x = 11, $hit.baseX = $hit.x, $hit.y = 7, $hit.baseY = $hit.y
     }
 
     function animateIn() {
@@ -20970,7 +20970,7 @@ Class(function MouseFlowMap({
             format: Texture.RGBAFormat,
             enabled: Tests.screenGlow()
         }), _this.volumetricLight.screenQuadMesh.shader.uniforms.tMask = {
-            value: Utils3D.getTexture("/ActiveTheory/images/_scenelayout/black.jpg")
+            value: Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/black.jpg")
         }, _this.volumetricLight.resolution = Tests.screenVolumeResolution(), _cubes = await _layout.getLayer("Cubes"), await _cubes.ready(), _this.volumetricLight.add(_cubes.mesh, !0), _this.volumetricLight.add(_cubes.quad), _this.volumetricLight.add(_cubes.quadInstance), Tests.interactiveScreen() || _this.useStatic()
     }(), this.setupAnimation = async function() {
         _particles || ([_particles, _cubes] = await _layout.getLayers("Particles", "Cubes")), await _particles.ready(), _particles.customClass.setupAnimation()
@@ -21040,7 +21040,7 @@ Class(function MouseFlowMap({
     }
 }), Class(function ScreenCubes(_input, _group) {
     function initVideo() {
-        (_video = _this.initClass(VideoColorGrid, "/ActiveTheory/videos/_test/climatune.mp4", 1)).play()
+        (_video = _this.initClass(VideoColorGrid, "/ActiveTheory/assets/videos/_test/climatune.mp4", 1)).play()
     }
     async function initMesh() {
         let geom = (new Geometry).instanceFrom(new BoxGeometry(1, 1)),
@@ -21309,7 +21309,7 @@ Class(function MouseFlowMap({
     }
 }), Class(function WorkBarEl(_category, _data, _index) {
     function initBar() {
-        ($bar = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
+        ($bar = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
         let shader = _this.initClass(Shader, "BarShader", {
             transparent: !0
         });
@@ -21317,7 +21317,7 @@ Class(function MouseFlowMap({
     }
 
     function initSide() {
-        ($side = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
+        ($side = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
         let shader = _this.initClass(Shader, "BarShader", {
             transparent: !0
         });
@@ -21325,7 +21325,7 @@ Class(function MouseFlowMap({
     }
 
     function initHit() {
-        $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"));
+        $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
         let shader = _this.initClass(Shader, "BarHitShader", {
             transparent: !0
         });
@@ -21508,7 +21508,7 @@ Class(function MouseFlowMap({
     }
 
     function initLine() {
-        ($line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"))).show = "worklist" == Pages.instance().initState ? 1 : 0, $line.y = .4 * Stage.height, $container.add($line);
+        ($line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).show = "worklist" == Pages.instance().initState ? 1 : 0, $line.y = .4 * Stage.height, $container.add($line);
         let shader = _this.initClass(Shader, "WorkListUIItem", {
             uColor: UIColor.uniform,
             uHovered: {
@@ -22169,7 +22169,7 @@ Class(function MouseFlowMap({
     }
 
     function initBg() {
-        ($bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/images/_scenelayout/mask.jpg"))).parentSeo = _this.parent.parent.glui, $this.add($bg), $this.alpha = 0;
+        ($bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).parentSeo = _this.parent.parent.glui, $this.add($bg), $this.alpha = 0;
         let aspect = new Vector2(1, 1);
         aspect.y = _width / _height;
         let shader = _this.initClass(Shader, "WorkItemButtonBg", {
@@ -22328,7 +22328,7 @@ Class(function MouseFlowMap({
     }
 
     function initUnderline() {
-        $line = $gl(1, 1, "/ActiveTheory/images/_scenelayout/mask.jpg");
+        $line = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/mask.jpg");
         let shader = _this.initClass(Shader, "BasicGLUIBatch", {
             uAlpha: {
                 value: 1
@@ -22339,7 +22339,7 @@ Class(function MouseFlowMap({
     }
 
     function initHit() {
-        ($hit = $gl(1, 1, "/ActiveTheory/images/_scenelayout/uv.jpg")).parentSeo = _this.parent.parent.parent.glui, $hit.shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit)
+        ($hit = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/uv.jpg")).parentSeo = _this.parent.parent.parent.glui, $hit.shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $this.add($hit)
     }
 
     function addHandlers() {
@@ -22577,7 +22577,7 @@ Class(function MouseFlowMap({
     }
 }), Class(function WorkListUIItem(_data, _index, _width, _height) {
     function initGL() {
-        ($this = $gl(_width, _height, "/ActiveTheory/images/_scenelayout/trans.png")).hide(), _this.element = $this, ($line = $gl(_width, 2, "/ActiveTheory/images/_scenelayout/uv.jpg")).y = 4, $line.scaleX = .5, $line.x = .25 * _width, $this.add($line)
+        ($this = $gl(_width, _height, "/ActiveTheory/assets/images/_scenelayout/trans.png")).hide(), _this.element = $this, ($line = $gl(_width, 2, "/ActiveTheory/assets/images/_scenelayout/uv.jpg")).y = 4, $line.scaleX = .5, $line.x = .25 * _width, $this.add($line)
     }
 
     function initShader() {
@@ -22649,7 +22649,7 @@ Class(function MouseFlowMap({
             });
             $text.useShader(testShader);
             let isTablet = Device.mobile && Device.mobile.tablet,
-                $line = $gl(isTablet ? 50 : 35, 1, "/ActiveTheory/images/_scenelayout/mask.jpg"),
+                $line = $gl(isTablet ? 50 : 35, 1, "/ActiveTheory/assets/images/_scenelayout/mask.jpg"),
                 shader = _this.initClass(Shader, "BasicGLUIBatch", {
                     uAlpha: {
                         value: 1
@@ -22674,7 +22674,7 @@ Class(function MouseFlowMap({
         for (let i = 0, l = _tags.length; i < l; i++) {
             let $tag = _tags[i];
             _textBatch.add($tag), _lineBatch.add($tag.$line);
-            let $hit = $gl(1, 1, "/ActiveTheory/images/_scenelayout/uv.jpg");
+            let $hit = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/uv.jpg");
             $hit.parentSeo = _group, $hit.shader.neverRender = !0, $hit.setZ(1e3), $hit.alpha = 1e-4, $hit.mesh.position.z = .01, $hit.scaleY = 4 * _size, _group.add($hit), _hits.push($hit), $hit.scaleX = $tag.dimensions.width + 50, $hit.x = Device.mobile ? 30 - $hit.scaleX : -50, $hit.y = $tag.y - $hit.scaleY / 2, $hit.index = $tag.index, $hit.data = $tag.data, $hit.interact(hover, click, {
                 url: "work?tag=" + $tag.data,
                 label: $tag.data
