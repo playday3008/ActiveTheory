@@ -17519,7 +17519,7 @@ Class(function MouseFlowMap({
                 blending: Shader.ADDITIVE_BLENDING
             });
             if (await $text.useShader(testShader), _textBatch.add($text), $text.alpha = 0, $text.shader = testShader, $text.stateId = item.state, $text.data = item, _items.push($text), promises.push($text.text.ready()), Device.mobile) {
-                let $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
+                let $hit = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"));
                 $hit.shader.neverRender = !0, $hit.scaleX = 60, $hit.scaleY = 30, $hit.mesh.position.z = .01, $text.hit = $hit, _linksContainer.add($hit)
             }
         }
@@ -17653,11 +17653,11 @@ Class(function MouseFlowMap({
             let {
                 id: id,
                 imgSize: imgSize
-            } = item, $icon = $gl(imgSize[0], imgSize[1], Utils3D.getTexture(`/ActiveTheory/assets/images/about/${id}.png`));
+            } = item, $icon = $gl(imgSize[0], imgSize[1], Utils3D.getTexture(`ActiveTheory/assets/images/about/${id}.png`));
             $icon.id = id;
             let shader = _this.initClass(Shader, "AboutObject", AboutUI.getGradientUniforms());
             if ($icon.useShader(shader), $icon.alpha = .6, _group.add($icon), _icons.push($icon), Device.mobile) {
-                let $hit = $gl(34, 34, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
+                let $hit = $gl(34, 34, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"));
                 _group.add($hit), $hit.shader.neverRender = !0, $icon.$hit = $hit, $hit.alpha = 1e-4
             }
         })
@@ -18973,7 +18973,7 @@ Class(function MouseFlowMap({
                 });
             if ($group.add(batch), data.mLines)
                 for (let i = 0, l = data.mLines.length; i < l; i++) {
-                    let $line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")),
+                    let $line = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg")),
                         shader = _this.initClass(Shader, "BasicGLUIBatch", {
                             blending: Shader.ADDITIVE_BLENDING
                         });
@@ -20134,7 +20134,7 @@ Class(function MouseFlowMap({
     }
 
     function initBg() {
-        ($hit = $gl(1.05 * _width, 1.6 * _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).y = -.04, $hit.baseY = $hit.y, $hit.alpha = 1e-5, $hit.shader.neverRender = !0, $bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")), $this.add($bg), $bg.add($hit);
+        ($hit = $gl(1.05 * _width, 1.6 * _height, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"))).y = -.04, $hit.baseY = $hit.y, $hit.alpha = 1e-5, $hit.shader.neverRender = !0, $bg = $gl(_width, _height, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg")), $this.add($bg), $bg.add($hit);
         let aspect = new Vector2(1, 1);
         aspect.y = _width / _height;
         let shader = _this.initClass(Shader, "WorkItemButtonBg", {
@@ -20433,7 +20433,7 @@ Class(function MouseFlowMap({
             value: new Vector2(0, 1)
         },
         tMask: {
-            value: Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")
+            value: Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg")
         },
         uLogoAffect: HomeLogo.instance().uniform
     }), _shader.receiveShadow = !0, Mirror.instance().decorate(_shader), _this.startRender(_ => {}), this.onVisible = function() {
@@ -20445,7 +20445,7 @@ Class(function MouseFlowMap({
             value: new Color("#000000")
         },
         tMask: {
-            value: Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg")
+            value: Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg")
         }
     })
 }), Class(function SceneCode(_input, _group) {
@@ -21309,7 +21309,7 @@ Class(function MouseFlowMap({
     }
 }), Class(function WorkBarEl(_category, _data, _index) {
     function initBar() {
-        ($bar = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
+        ($bar = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
         let shader = _this.initClass(Shader, "BarShader", {
             transparent: !0
         });
@@ -21317,7 +21317,7 @@ Class(function MouseFlowMap({
     }
 
     function initSide() {
-        ($side = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
+        ($side = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"))).alpha = _this.baseAlpha;
         let shader = _this.initClass(Shader, "BarShader", {
             transparent: !0
         });
@@ -21325,7 +21325,7 @@ Class(function MouseFlowMap({
     }
 
     function initHit() {
-        $hit = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"));
+        $hit = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"));
         let shader = _this.initClass(Shader, "BarHitShader", {
             transparent: !0
         });
@@ -21508,7 +21508,7 @@ Class(function MouseFlowMap({
     }
 
     function initLine() {
-        ($line = $gl(1, 1, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).show = "worklist" == Pages.instance().initState ? 1 : 0, $line.y = .4 * Stage.height, $container.add($line);
+        ($line = $gl(1, 1, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"))).show = "worklist" == Pages.instance().initState ? 1 : 0, $line.y = .4 * Stage.height, $container.add($line);
         let shader = _this.initClass(Shader, "WorkListUIItem", {
             uColor: UIColor.uniform,
             uHovered: {
@@ -22169,7 +22169,7 @@ Class(function MouseFlowMap({
     }
 
     function initBg() {
-        ($bg = $gl(_width, _height, Utils3D.getTexture("/ActiveTheory/assets/images/_scenelayout/mask.jpg"))).parentSeo = _this.parent.parent.glui, $this.add($bg), $this.alpha = 0;
+        ($bg = $gl(_width, _height, Utils3D.getTexture("ActiveTheory/assets/images/_scenelayout/mask.jpg"))).parentSeo = _this.parent.parent.glui, $this.add($bg), $this.alpha = 0;
         let aspect = new Vector2(1, 1);
         aspect.y = _width / _height;
         let shader = _this.initClass(Shader, "WorkItemButtonBg", {
@@ -22328,7 +22328,7 @@ Class(function MouseFlowMap({
     }
 
     function initUnderline() {
-        $line = $gl(1, 1, "/ActiveTheory/assets/images/_scenelayout/mask.jpg");
+        $line = $gl(1, 1, "ActiveTheory/assets/images/_scenelayout/mask.jpg");
         let shader = _this.initClass(Shader, "BasicGLUIBatch", {
             uAlpha: {
                 value: 1
@@ -22649,7 +22649,7 @@ Class(function MouseFlowMap({
             });
             $text.useShader(testShader);
             let isTablet = Device.mobile && Device.mobile.tablet,
-                $line = $gl(isTablet ? 50 : 35, 1, "/ActiveTheory/assets/images/_scenelayout/mask.jpg"),
+                $line = $gl(isTablet ? 50 : 35, 1, "ActiveTheory/assets/images/_scenelayout/mask.jpg"),
                 shader = _this.initClass(Shader, "BasicGLUIBatch", {
                     uAlpha: {
                         value: 1
