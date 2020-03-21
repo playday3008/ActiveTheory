@@ -18558,7 +18558,7 @@ Class(function MouseFlowMap({
     function initVideo() {
         let ext = "probably" === Video.supportsVideoType("webm") ? "webm" : "mp4",
             fallback = Tests.workListUseStaticImage();
-        (_grid1 = _this.initClass(VideoColorGrid, `assets/videos/work-full.${ext}`, 5, !0, fallback ? "assets/videos/work-full-fallback.jpg" : null)).aspect = 1, (_grid2 = _this.initClass(VideoColorGrid, `assets/videos/lab-full.${ext}`, 5, !0, fallback ? "assets/videos/lab-full-fallback.jpg" : null)).aspect = 1
+        (_grid1 = _this.initClass(VideoColorGrid, `/ActiveTheory/assets/videos/work-full.${ext}`, 5, !0, fallback ? "/ActiveTheory/assets/videos/work-full-fallback.jpg" : null)).aspect = 1, (_grid2 = _this.initClass(VideoColorGrid, `/ActiveTheory/assets/videos/lab-full.${ext}`, 5, !0, fallback ? "/ActiveTheory/assets/videos/lab-full-fallback.jpg" : null)).aspect = 1
     }
     async function playVideo(data, delay = 0) {
         if (!data.video_offset) return;
